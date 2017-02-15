@@ -1,0 +1,14 @@
+{
+  "name": "kickcomment",
+  "version": "1.0.0",
+  "description": "kickstarter comments searcher",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simon Taylor",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^9.11.0"
+  }
+}
