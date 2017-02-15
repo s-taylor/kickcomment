@@ -9,22 +9,24 @@ jsdom.env({
     if (err) return console.log('Error:', err);
 
     const $ = window.$;
+    const comments = [];
     $(".NS_comments__comment").each(function() {
       const comment = $(this);
-      const author = comment.find('.comment-inner > .main a.author').text();
+      const id = comment.attr('id');
+      const author = comment.find('.comment-inner > .main > h3 > a.author').text();
+      const date = comment.find('.comment-inner > .main > h3 > span.date > a > data').attr('data-value').replace(/\"/g, '');
 
       let contentArr = [];
       comment.find(".comment-inner > .main p").each(function() {
         const text = $(this).text();
         contentArr.push(text);
       });
-      const content = contentArr.join('\n');
+      const content = contentArr.join('\n\n');
 
-      console.log('---------------------------');
-      console.log('Author:', author);
-      console.log('...........................');
-      console.log(content);
+      comments.push({ author, date, id, content });
     });
+
+    console.log(comments);
 
     const nextUrl = window.$('.older_comments').attr('href');
     console.log('---------------------------');
