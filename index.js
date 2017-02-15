@@ -1,7 +1,5 @@
 const jsdom = require('jsdom');
 
-const url = 'https://www.kickstarter.com/projects/2074786394/vast-the-crystal-caverns-second-printing-with-mini/comments';
-
 function getDate($comment) {
   const datePath = '.comment-inner > .main > h3 > span.date > a > data';
   return $comment.find(datePath).attr('data-value').replace(/\"/g, '');
@@ -21,29 +19,39 @@ function getContent($, $comment) {
   return contentArr.join('\n\n');
 }
 
-jsdom.env({
-  url,
-  scripts: ["http://code.jquery.com/jquery.js"],
-  done: function (err, window) {
-    if (err) return console.log('Error:', err);
+function getComments(url) {
+  return new Promise(function(resolve, reject) {
+    jsdom.env({
+      url,
+      scripts: ["http://code.jquery.com/jquery.js"],
+      done: function(err, window) {
+        if (err) return reject(err);
 
-    const $ = window.$;
-    const comments = [];
-    $(".NS_comments__comment").each(function() {
-      const $comment = $(this);
+        const $ = window.$;
+        const comments = [];
+        $(".NS_comments__comment").each(function() {
+          const $comment = $(this);
 
-      comments.push({
-        author: getAuthor($comment),
-        date: getDate($comment),
-        id:  $comment.attr('id'),
-        content: getContent($, $comment)
-      });
+          comments.push({
+            author: getAuthor($comment),
+            date: getDate($comment),
+            id:  $comment.attr('id'),
+            content: getContent($, $comment)
+          });
+        });
+
+        const nextUrl = $('.older_comments').attr('href');
+        
+        return resolve({ comments, nextUrl });
+      }
     });
+  });
+}
 
-    console.log(comments);
+const url = 'https://www.kickstarter.com/projects/2074786394/vast-the-crystal-caverns-second-printing-with-mini/comments';
 
-    const nextUrl = $('.older_comments').attr('href');
-    console.log('---------------------------');
-    console.log('nextUrl', nextUrl);
-  }
-});
+getComments(url)
+.then(result => {
+  console.log('result', result);
+})
+.catch(err => console.log('ERROR:', err));
