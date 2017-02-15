@@ -1,5 +1,7 @@
 const jsdom = require('jsdom');
 
+const domain = 'https://www.kickstarter.com';
+
 function getDate($comment) {
   const datePath = '.comment-inner > .main > h3 > span.date > a > data';
   return $comment.find(datePath).attr('data-value').replace(/\"/g, '');
@@ -48,9 +50,9 @@ function getComments(url) {
   });
 }
 
-const url = 'https://www.kickstarter.com/projects/2074786394/vast-the-crystal-caverns-second-printing-with-mini/comments';
+const path = '/projects/2074786394/vast-the-crystal-caverns-second-printing-with-mini/comments';
 
-getComments(url)
+getComments(`${domain}${path}`)
 .then(result => {
   console.log('result', result);
 })
