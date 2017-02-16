@@ -1,6 +1,6 @@
-# Kick Comments API
+# Kick(starter) Comment API
 
-## Object
+## Objective
 
 This project is aiming to implement a kickstarter comment search engine. Currently kickstarter comments cannot be searched at all which makes it hard to follow conversations or replies, particularly when new comments are being created at a rapid rate.
 
