@@ -1,5 +1,5 @@
 const test = require('ava');
-const fetcher = require('../lib/fetcher');
+const { getComments, fetcher } = require('../lib/fetcher');
 const nock = require('./helpers/nock');
 
 const path = '/projects/2074786394/vast-the-crystal-caverns-second-printing-with-mini/comments';
@@ -17,6 +17,15 @@ test('fetcher', t => {
     t.is(typeof results, 'object');
     t.is(results.comments.constructor, Array);
     t.is(typeof results.nextUrl, 'string');
-    //console.log('results.comments', results.comments);
+  });
+});
+
+
+test('getComments', t => {
+  t.plan(1);
+
+  return getComments(path, 5)
+  .then(comments => {
+    t.is(comments.constructor, Array);
   });
 });
