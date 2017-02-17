@@ -22,10 +22,12 @@ test('fetcher', t => {
 
 
 test('getComments', t => {
-  t.plan(1);
+  t.plan(2);
 
-  return getComments(path, 5)
+  const limit = 5;
+  return getComments(path, limit)
   .then(comments => {
     t.is(comments.constructor, Array);
+    t.is(comments.length, limit * 50); // 5 pages x 50 per page
   });
 });
