@@ -10,24 +10,36 @@ test.before(() => {
 });
 
 test('fetcher', t => {
-  t.plan(3);
+  t.plan(7);
 
   return fetcher(path)
   .then(results => {
     t.is(typeof results, 'object');
     t.is(results.comments.constructor, Array);
     t.is(typeof results.nextUrl, 'string');
+
+    const comment = results.comments[0];
+    t.is(typeof comment.author, 'string');
+    t.is(typeof comment.date, 'string');
+    t.is(typeof comment.id, 'string');
+    t.is(typeof comment.content, 'string');
   });
 });
 
 
 test('getComments', t => {
-  t.plan(2);
+  t.plan(6);
 
   const limit = 5;
   return getComments(path, limit)
   .then(comments => {
     t.is(comments.constructor, Array);
     t.is(comments.length, limit * 50); // 5 pages x 50 per page
+
+    const comment = comments[0];
+    t.is(typeof comment.author, 'string');
+    t.is(typeof comment.date, 'string');
+    t.is(typeof comment.id, 'string');
+    t.is(typeof comment.content, 'string');
   });
 });
