@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "ava"
+    "test": "ava",
+    "serverless:test": "serverless invoke local --function getComments --path serverless-test-data.json --logs",
+    "serverless:deploy": "serverless deploy"
   },
   "ava": {
     "verbose": true
