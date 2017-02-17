@@ -4,10 +4,12 @@
   "description": "kickstarter comments searcher",
   "main": "index.js",
   "scripts": {
+    "build": "babel ./src --presets latest -d ./build",
     "lint": "eslint .",
     "test": "ava",
-    "serverless:test": "serverless invoke local --function getComments --path serverless-test-data.json --logs",
-    "serverless:deploy": "serverless deploy"
+    "serverless:test:local": "serverless invoke local --function getComments --path serverless-test-data.json --logs",
+    "serverless:test:remote": "serverless invoke --function getComments --path serverless-test-data.json --logs",
+    "serverless:deploy": "npm run build && serverless deploy"
   },
   "ava": {
     "verbose": true
@@ -15,10 +17,13 @@
   "author": "Simon Taylor",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "jsdom": "^9.11.0"
   },
   "devDependencies": {
     "ava": "^0.18.1",
+    "babel-cli": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",

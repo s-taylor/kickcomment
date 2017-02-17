@@ -60,6 +60,11 @@ functions:
       - http:
           path: comments
           method: get
+          request:
+            parameters:
+              querystrings:
+                id: true
+                name: true
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

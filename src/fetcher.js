@@ -1,3 +1,4 @@
+require('babel-polyfill'); // polyfill promise support
 const jsdom = require('jsdom');
 
 const domain = 'https://www.kickstarter.com';

@@ -1,5 +1,5 @@
 const test = require('ava');
-const { getComments, fetcher } = require('../lib/fetcher');
+const { getComments, fetcher } = require('../src/fetcher');
 const nock = require('./helpers/nock');
 
 const path = '/projects/2074786394/vast-the-crystal-caverns-second-printing-with-mini/comments';
