@@ -2,6 +2,7 @@ const test = require('ava');
 const { getComments, fetcher } = require('../src/fetcher');
 const nock = require('./helpers/nock');
 
+const limit = 5;
 const path = '/projects/2074786394/vast-the-crystal-caverns-second-printing-with-mini/comments';
 
 test.before(() => {
@@ -9,7 +10,7 @@ test.before(() => {
   nock.playback();
 });
 
-test('fetcher', t => {
+test('fetcher - must return expected results', t => {
   t.plan(7);
 
   return fetcher(path)
@@ -27,10 +28,9 @@ test('fetcher', t => {
 });
 
 
-test('getComments', t => {
+test('getComments - must return expected results', t => {
   t.plan(6);
 
-  const limit = 5;
   return getComments(path, limit)
   .then(comments => {
     t.is(comments.constructor, Array);
@@ -42,4 +42,14 @@ test('getComments', t => {
     t.is(typeof comment.id, 'string');
     t.is(typeof comment.content, 'string');
   });
+});
+
+test('getComments - must reject with error when invalid project', t => {
+  t.plan(1);
+  const invalidPath = '/projects/1234567890/some-cool-project/comments';
+
+  return getComments(invalidPath, limit)
+  .catch(err => {
+    t.deepEqual(err, new Error('[404] Project not found'))
+  })
 });
