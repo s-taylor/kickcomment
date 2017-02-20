@@ -49,7 +49,5 @@ test('getComments - must reject with error when invalid project', t => {
   const invalidPath = '/projects/1234567890/some-cool-project/comments';
 
   return getComments(invalidPath, limit)
-  .catch(err => {
-    t.deepEqual(err, new Error('[404] Project not found'))
-  })
+  .catch(err => t.deepEqual(err, new Error('[404] Project not found')));
 });
