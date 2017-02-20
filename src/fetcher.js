@@ -62,7 +62,6 @@ function getComments(path, limit) {
     return fetcher(nextPath)
     .then(results => {
       counter += 1;
-      // TODO - NEEDS TEST
       if (counter === 1 && results.comments.length === 0) {
         // if first request returns empty array, project not found (or zero comments)
         return Promise.reject(new Error('[404] Project not found'));
