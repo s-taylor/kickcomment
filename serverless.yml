@@ -60,6 +60,7 @@ functions:
       - http:
           path: comments
           method: get
+          integration: lambda
           request:
             parameters:
               querystrings:
