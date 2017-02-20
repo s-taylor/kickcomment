@@ -9,7 +9,8 @@ This project is aiming to implement a kickstarter comment search engine. Current
 * Implement an API that can scrape all of the comments for a particular project
 * Provide the ability to search through these comments using a given keyword or username
 
-I'm using this as an oppurtunity to also learn AWS Lambda as it is the perfect candidate as an API to scrape comments adhoc (as requested by the user), so the Lamdba configuration (using the Serverless framework) will be included in the repo.
-
 Finally a basic front end UI will need to be built to facilitate searching. This will be done under a separate repo once the API is built.
 
+## Hosting
+
+I'm using this as an oppurtunity to also learn AWS Lambda as it is the perfect candidate as an API to scrape comments adhoc (as requested by the user), so the Lamdba configuration (using the Serverless framework) will be included in the repo. This means if you want to deploy this, install [Serverless](https://github.com/serverless/serverless) on your machine and run the deploy command (see package.json).
