@@ -19,7 +19,7 @@ module.exports.getComments = (event, context, callback) => {
 
   return getComments(path, limit)
   .then(comments => callback(null, comments))
-  .catch(err => callback(new Error('[500] ' + err.message)));
+  .catch(callback);
 };
 
 /* eslint-enable no-var, vars-on-top, prefer-template */
