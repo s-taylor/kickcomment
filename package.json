@@ -7,8 +7,8 @@
     "build": "babel ./src --presets latest -d ./build",
     "lint": "eslint .",
     "test": "ava",
-    "serverless:test:local": "serverless invoke local --function getComments --path serverless-test-data.json --logs",
-    "serverless:test:remote": "serverless invoke --function getComments --path serverless-test-data.json --logs",
+    "serverless:test:local": "serverless invoke local --function getComments --path ./test/fixtures/serverless-test-data.json --logs",
+    "serverless:test:remote": "serverless invoke --function getComments --path ./test/fixtures/serverless-test-data.json --logs",
     "serverless:deploy": "npm run build && serverless deploy"
   },
   "ava": {
