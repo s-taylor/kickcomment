@@ -13,7 +13,7 @@ function stubHandler(stub) {
   });
 }
 
-test.cb('getComments - errors when no query string', t => {
+test.cb('getComments - must error when no query string', t => {
   t.plan(1);
   const handler = stubHandler();
 
@@ -23,7 +23,7 @@ test.cb('getComments - errors when no query string', t => {
   });
 });
 
-test.cb('getComments - errors when no project id', t => {
+test.cb('getComments - must error when no project id', t => {
   t.plan(1);
   const handler = stubHandler();
 
@@ -33,7 +33,7 @@ test.cb('getComments - errors when no project id', t => {
   });
 });
 
-test.cb('getComments - errors when no project name', t => {
+test.cb('getComments - must error when no project name', t => {
   t.plan(1);
   const handler = stubHandler();
 
