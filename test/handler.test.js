@@ -13,6 +13,16 @@ function stubHandler(stub) {
   });
 }
 
+test.cb('getComments - must error when no event object', t => {
+  t.plan(1);
+  const handler = stubHandler();
+
+  handler.getComments(undefined, undefined, err => {
+    t.deepEqual(err, new Error('[400] Event object not found'));
+    t.end();
+  });
+});
+
 test.cb('getComments - must error when no query string', t => {
   t.plan(1);
   const handler = stubHandler();
