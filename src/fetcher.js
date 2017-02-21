@@ -24,7 +24,7 @@ function getContent($, $comment) {
 
 function fetcher(path) {
   const url = `${domain}${path}`;
-  console.log('fetching url: ', url);
+  if (process.env.NODE_ENV !== 'test') console.log('fetching url: ', url);
 
   return new Promise((resolve, reject) => {
     jsdom.env({
