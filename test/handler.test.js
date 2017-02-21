@@ -2,6 +2,9 @@ const test = require('ava');
 const proxyquire = require('proxyquire');
 const sinon = require('sinon');
 
+// NOTE: callback function testing with AVA requires test.cb(...)
+// https://github.com/avajs/ava#documentation
+
 function stubHandler(stub) {
   return proxyquire('../handler.js', {
     './build/fetcher': {
