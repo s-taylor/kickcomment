@@ -15,6 +15,20 @@ Finally a basic front end UI will need to be built to facilitate searching. This
 
 I'm using this as an oppurtunity to also learn AWS Lambda as it is the perfect candidate as an API to scrape comments adhoc (as requested by the user), so the Lamdba configuration (using the Serverless framework) will be included in the repo. This means if you want to deploy this, install [Serverless](https://github.com/serverless/serverless) on your machine and run the deploy command (see package.json).
 
+## Dynamo DB
+
+### Installation
+
+* [Brew](https://brew.sh/)
+* For DynamoDB to run locally you'll need Java Runtime Engine (JRE) `brew update` then `brew cask install java` and then restart.
+* Run `serverless dynamodb install`
+
+You can now access the shell via `http://localhost:8000/shell`
+
+### Running Database Locally
+
+* Run `serverless dynamodb start`
+
 - - -
 
 ## To do List

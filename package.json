@@ -17,8 +17,10 @@
   "author": "Simon Taylor",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.22.0",
     "babel-polyfill": "^6.23.0",
-    "jsdom": "^9.11.0"
+    "jsdom": "^9.11.0",
+    "serverless-dynamodb-local": "^0.2.18"
   },
   "devDependencies": {
     "ava": "^0.18.1",

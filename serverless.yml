@@ -93,6 +93,9 @@ functions:
 #    environment:
 #      variable2: value2
 
+plugins:
+  - serverless-dynamodb-local
+
 # you can add CloudFormation resource templates here
 #resources:
 #  Resources:
@@ -104,3 +107,26 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Comments
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+custom:
+  dynamodb:
+    start:
+      migration: true
+    migration:
+      dir: src/database/migrations
