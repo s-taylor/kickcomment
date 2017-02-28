@@ -12,8 +12,7 @@ function create(item) {
     // Prevent overwritting an existing record
     ExpressionAttributeNames: { '#id': 'id' }, // don't think this rename is required?
     ExpressionAttributeValues: { ':id': item.id },
-    ConditionExpression: '(#id <> :id)',
-    ReturnValues: 'ALL_OLD'
+    ConditionExpression: '(#id <> :id)'
   };
 
   return new Promise((resolve, reject) => {
