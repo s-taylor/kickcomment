@@ -1,5 +1,5 @@
 const test = require('ava');
-const { getComments, fetcher } = require('../src/fetcher');
+const { getComments, fetcher } = require('../build/fetcher');
 const nock = require('./helpers/nock');
 
 const limit = 5;
